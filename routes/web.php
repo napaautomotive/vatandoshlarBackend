@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImportExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::controller(ImportExportController::class)->group(function(){
+    Route::get('import_export', 'importExport');
+    Route::post('import', 'import')->name('import');
+    Route::get('export', 'export')->name('export');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
 });

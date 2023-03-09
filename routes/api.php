@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\CountryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,4 @@ Route::get('/partners', [ApiController::class, "getPartners"]);
 
 // Columns
 Route::get('/columns', [ApiController::class, "getColumns"]);
+Route::get("/country_relationship/{flage}", [CountryController::class, 'countries']);
