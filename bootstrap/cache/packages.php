@@ -11,6 +11,17 @@
       'AsyncWidget' => 'Arrilot\\Widgets\\AsyncFacade',
     ),
   ),
+  'darkaonline/l5-swagger' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'L5Swagger\\L5SwaggerServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'L5Swagger' => 'L5Swagger\\L5SwaggerFacade',
+    ),
+  ),
   'intervention/image' => 
   array (
     'providers' => 

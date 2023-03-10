@@ -1,0 +1,50 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger Petstore",
+        "description": "This is example for front end",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "yurayur1990@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://vatanparvarbackend.napaautomotive.uz/",
+            "description": "This is domen for frontend"
+        }
+    ],
+    "paths": {
+        "/api/country_relationship/{flage}": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "countries",
+                "parameters": [
+                    {
+                        "name": "flage",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    }
+}
