@@ -25,7 +25,7 @@ class ApiController extends Controller
      */
     public function getNews()
     {
-        $service = new ApiService(new Contact);
+        $service = new ApiService(new News);
         return $service->getApi();
     }
 
