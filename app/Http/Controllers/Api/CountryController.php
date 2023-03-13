@@ -40,11 +40,12 @@ class CountryController extends Controller
     public function countries($slug): JsonResponse
     {
         try {
-            $datas = Relationship::where('country_flag_code', $slug)->get();
-
+            $datas = Relationship::where('country_flag_code', $slug)->orderBy('id','DESC')->get();
+            $count = count($datas);
             return response()->json([
                 'status'=>true,
-                'data' => $datas
+                "count"=>$count,
+                'data' => $datas,
             ]);
 
         } catch (\Throwable $th) {

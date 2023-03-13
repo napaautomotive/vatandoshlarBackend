@@ -6,140 +6,141 @@ use App\Http\Controllers\Controller;
 use App\Models\Column;
 use App\Models\Contact;
 use App\Models\News;
-use App\Models\Partner;
 use App\Models\Sponsr;
-use Illuminate\Http\Request;
+use App\Services\ApiService;
 
 class ApiController extends Controller
 {
-    // news
-    public function getNews(Request $req)
+    /**
+     * @OA\Get(
+     *     path="/api/news",
+     *     tags={"News"},
+     *     summary="Get data by short name",
+     *     operationId="getNews",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+    public function getNews()
     {
-        try {
-            $data = News::all();
-            return response()->json([
-                'ok' => true,
-                'data' => $data,
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'ok' => false,
-                'msg' => $e->getMessage(),
-            ]);
-        }
+        $service = new ApiService(new News);
+        return $service->getApi();
     }
 
-    public function getOneNews(Request $req, $id)
-    {
-        try {
+    /**
+     * @OA\Get(
+     *     path="/api/news/{id}",
+     *     tags={"News"},
+     *     summary="Get data by short name",
+     *     operationId="getOneNews",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="flage of country that needs to be got",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
 
-            $news = News::where("id", $id)->first();
-            return response()->json([
-                'ok' => true,
-                "data" => $news
-            ]);
-        } catch (\Exception $e) {
-            if (str_contains($e->getMessage(), 'seen')) {
-                return response()->json([
-                    'ok' => false,
-                    'msg' => "Invalid id.",
-                ]);
-            }
-            return response()->json([
-                'ok' => false,
-                'msg' => $e->getMessage(),
-            ]);
-        }
+    public function getOneNews($id)
+    {
+        $service = new ApiService(new News);
+        return $service->getApi($id);
     }
 
-    public function getNewsPag(Request $req, $count)
+    /**
+     * @OA\Get(
+     *     path="/api/news/count/{count}",
+     *     tags={"News"},
+     *     summary="Get data by short name",
+     *     operationId="getNewsPag",
+     *     @OA\Parameter(
+     *         name="count",
+     *         in="path",
+     *         description="flage of country that needs to be got",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getNewsPag($count)
     {
-        try {
-            //
-            if (intval($count) == 0) {
-                throw new \ErrorException('not found');
-            }
-
-
-            $data = News::orderBy("created_at", "DESC")->simplePaginate($count);
-            return response()->json([
-                'ok' => true,
-                'data' => $data,
-                "total_number" => News::all()->count()
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'ok' => false,
-                'msg' => $e->getMessage(),
-            ]);
-        }
+        $service = new ApiService(new News);
+        return $service->paginateApi($count);
     }
 
-    // contact
-    public function getContact(Request $req)
+    /**
+     * @OA\Get(
+     *     path="/api/contacts",
+     *     tags={"Contact"},
+     *     summary="Get data by short name",
+     *     operationId="getContact",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getContact()
     {
-        try {
-            $data = Contact::all()->first();
-            return response()->json([
-                'ok' => true,
-                'data' => $data,
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'ok' => false,
-                'msg' => $e->getMessage(),
-            ]);
-        }
+        $service = new ApiService(new Contact);
+        return $service->firstOfModel();
     }
 
-    // sponsrs
-    public function getSponsrs(Request $req)
+    /**
+     * @OA\Get(
+     *     path="/api/sponsrs",
+     *     tags={"Sponsr"},
+     *     summary="Get data by short name",
+     *     operationId="getSponsrs",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getSponsrs()
     {
-        try {
-            $data = Sponsr::all();
-            return response()->json([
-                'ok' => true,
-                'data' => $data,
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'ok' => false,
-                'msg' => $e->getMessage(),
-            ]);
-        }
+        $service = new ApiService(new Sponsr);
+        return $service->getApi();
     }
 
-      // partners
-      public function getPartners(Request $req)
-      {
-          try {
-              $data = Partner::all();
-              return response()->json([
-                  'ok' => true,
-                  'data' => $data,
-              ]);
-          } catch (\Exception $e) {
-              return response()->json([
-                  'ok' => false,
-                  'msg' => $e->getMessage(),
-              ]);
-          }
-      }
+    /**
+     * @OA\Get(
+     *     path="/api/columns",
+     *     tags={"Columns"},
+     *     summary="Get data by short name",
+     *     operationId="getColumns",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
 
-         // columns
-         public function getColumns(Request $req)
-         {
-             try {
-                 $data = Column::all();
-                 return response()->json([
-                     'ok' => true,
-                     'data' => $data,
-                 ]);
-             } catch (\Exception $e) {
-                 return response()->json([
-                     'ok' => false,
-                     'msg' => $e->getMessage(),
-                 ]);
-             }
-         }
+    public function getColumns()
+    {
+        $service = new ApiService(new Column);
+        return $service->getApi();
+    }
 }

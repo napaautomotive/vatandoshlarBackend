@@ -19,18 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-// News
-Route::get('/news', [ApiController::class, "getNews"]);
-Route::get('/news/{id}', [ApiController::class, "getOneNews"]);
-Route::get('/news/count/2?page=2', [ApiController::class, "getNewsPag"]);
 
-// Contacts
-Route::get('/contacts', [ApiController::class, "getContact"]);
-// Sponsrs
-Route::get('/sponsrs', [ApiController::class, "getSponsrs"]);
-// Partners
-Route::get('/partners', [ApiController::class, "getPartners"]);
+Route::controller(ApiController::class)->group(function () {
+    Route::get('/news', "getNews");
+    Route::get('/news/{id}', "getOneNews");
+    Route::get('/news/page/{count}', "getNewsPag");
+    Route::get('/contacts', "getContact");
+    Route::get('/sponsrs', "getSponsrs");
+    Route::get('/columns', "getColumns");
+});
 
-// Columns
-Route::get('/columns', [ApiController::class, "getColumns"]);
+
 Route::get("/country_relationship/{flage}", [CountryController::class, 'countries']);

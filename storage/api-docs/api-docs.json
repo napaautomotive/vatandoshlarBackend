@@ -20,6 +20,114 @@
         }
     ],
     "paths": {
+        "/api/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getNews",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/news/{id}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneNews",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/news/count/{count}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getNewsPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/contacts": {
+            "get": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getContact",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/sponsrs": {
+            "get": {
+                "tags": [
+                    "Sponsr"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getSponsrs",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/columns": {
+            "get": {
+                "tags": [
+                    "Columns"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getColumns",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
         "/api/country_relationship/{flage}": {
             "get": {
                 "tags": [
