@@ -15,9 +15,9 @@ class ImportUsers implements ToModel
     public function model(array $row)
     {
         return new Country([
-            'country_name_uz'=>$row[1],
+            'country_name_uz'=>$row[2],
             'country_name_en'=>$row[1],
-            'country_name_ru'=>$row[1],
+            'country_name_ru'=>$row[3],
             'country_flag_code'=>$row[0]
         ]);
     }

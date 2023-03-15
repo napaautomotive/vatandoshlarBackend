@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\News;
 use App\Models\Sponsr;
 use App\Services\ApiService;
+use App\Models\Country;
 
 class ApiController extends Controller
 {
@@ -55,6 +56,10 @@ class ApiController extends Controller
     public function getOneNews($id)
     {
         $service = new ApiService(new News);
+        $newViewers = News::findOrFail($id);
+        $newViewers->update([
+            'viewers' => $newViewers->viewers + 1
+        ]);
         return $service->getApi($id);
     }
 
@@ -141,6 +146,25 @@ class ApiController extends Controller
     public function getColumns()
     {
         $service = new ApiService(new Column);
+        return $service->getApi();
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/countries",
+     *     tags={"Country"},
+     *     summary="Get data by short name",
+     *     operationId="getCountries",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getCountries()
+    {
+        $service = new ApiService(new Country);
         return $service->getApi();
     }
 }

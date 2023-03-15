@@ -27,7 +27,7 @@ Route::controller(ApiController::class)->group(function () {
     Route::get('/contacts', "getContact");
     Route::get('/sponsrs', "getSponsrs");
     Route::get('/columns', "getColumns");
+    Route::get('/countries', "getCountries");
 });
-
 
 Route::get("/country_relationship/{flage}", [CountryController::class, 'countries']);

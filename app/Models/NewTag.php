@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class News extends Model
+class NewTag extends Model
 {
-    protected $guarded=['id'];
+
+    protected $casts = [ 'options' => 'array', ];
     
 }

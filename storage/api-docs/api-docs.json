@@ -128,6 +128,20 @@
                 }
             }
         },
+        "/api/countries": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getCountries",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
         "/api/country_relationship/{flage}": {
             "get": {
                 "tags": [
