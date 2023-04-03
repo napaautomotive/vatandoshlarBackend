@@ -20,6 +20,824 @@
         }
     ],
     "paths": {
+        "/api/contacts": {
+            "get": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getContact",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/abouts": {
+            "get": {
+                "tags": [
+                    "Biz haqimizda"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getAbout",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/sponsrs": {
+            "get": {
+                "tags": [
+                    "Sponsr"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getSponsrs",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/countries": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getCountries",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/interactive-services": {
+            "get": {
+                "tags": [
+                    "InteractiveService"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getInteractiveServices",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/trusts": {
+            "get": {
+                "tags": [
+                    "Board of Trustees"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getTrustees",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/trusts/page/{count}": {
+            "get": {
+                "tags": [
+                    "Board of Trustees"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getTrustPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/sliders": {
+            "get": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getSliders",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/sliders/{id}": {
+            "get": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneSlider",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/assosiations": {
+            "get": {
+                "tags": [
+                    "Assosiation"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getAssosiation",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/assosiationcategory": {
+            "get": {
+                "tags": [
+                    "Assosiation"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getAssosiationCategory",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/infographics": {
+            "get": {
+                "tags": [
+                    "Infographic"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getInfographics",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/infographics/{id}": {
+            "get": {
+                "tags": [
+                    "Infographic"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneInfographics",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/infographics/page/{count}": {
+            "get": {
+                "tags": [
+                    "Infographic"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getInfographicsPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/events": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getEvents",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/events/{id}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneEvents",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/events/page/{count}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getEventsPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/infocategoryshows": {
+            "get": {
+                "tags": [
+                    "Turkum ko'rsatuvlar"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getInfocategorysshows",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/categoryshows": {
+            "get": {
+                "tags": [
+                    "Turkum ko'rsatuvlar"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getCategoryshows",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/categoryshows/{id}": {
+            "get": {
+                "tags": [
+                    "Turkum ko'rsatuvlar"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneCategoryshows",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/categoryshows/page/{count}": {
+            "get": {
+                "tags": [
+                    "Turkum ko'rsatuvlar"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getCategoryshowsPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/column-menus": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getColumnMenu",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/columns": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getColumns",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/columns/{id}": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneColumn",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/columns/page/{count}/{id}": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getColumnsPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "nechta chiqishi kerak?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Qaysi ID?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/country_relationship/{flage}": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "countries",
+                "parameters": [
+                    {
+                        "name": "flage",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/directions": {
+            "get": {
+                "tags": [
+                    "Asosiy yo‘nalishlari"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getDirections",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/directions/page/{count}": {
+            "get": {
+                "tags": [
+                    "Asosiy yo‘nalishlari"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getDirectionsPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/managements": {
+            "get": {
+                "tags": [
+                    "Rahbariyat tarkibi"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getManagements",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/managements/page/{count}": {
+            "get": {
+                "tags": [
+                    "Rahbariyat tarkibi"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getManagementsPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-video-menus": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediatekavideomenus",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-videos": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediatekavideos",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-videos/{id}": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneMediatekavideos",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-videos/page/{count}": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediatekavideosPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-videos/page/{count}/{id}": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediatekavideosPagID",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "nechta chiqishi kerak?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Qaysi ID?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-image-menus": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediateka_image_menus",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-images": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediateka_images",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-images/{id}": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getOneMediatekaimages",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-images/page/{count}": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediatekaimagesPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/mediateka-images/page/{count}/{id}": {
+            "get": {
+                "tags": [
+                    "Mediateka"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getMediatekaimagesPagID",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "nechta chiqishi kerak?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Qaysi ID?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
         "/api/news": {
             "get": {
                 "tags": [
@@ -27,6 +845,35 @@
                 ],
                 "summary": "Get data by short name",
                 "operationId": "getNews",
+                "responses": {
+                    "200": {
+                        "description": "Successfull operation"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/news/search/{title}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get data by title",
+                "operationId": "getNewsByTitle",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "405": {
                         "description": "Invalid input"
@@ -60,7 +907,7 @@
                 }
             }
         },
-        "/api/news/count/{count}": {
+        "/api/news/page/{count}": {
             "get": {
                 "tags": [
                     "News"
@@ -86,13 +933,13 @@
                 }
             }
         },
-        "/api/contacts": {
+        "/api/infopublicevents": {
             "get": {
                 "tags": [
-                    "Contact"
+                    "Jamoat birlashmalar tadbirlari"
                 ],
                 "summary": "Get data by short name",
-                "operationId": "getContact",
+                "operationId": "getInfopublicevent",
                 "responses": {
                     "405": {
                         "description": "Invalid input"
@@ -100,13 +947,13 @@
                 }
             }
         },
-        "/api/sponsrs": {
+        "/api/publicevents": {
             "get": {
                 "tags": [
-                    "Sponsr"
+                    "Jamoat birlashmalar tadbirlari"
                 ],
                 "summary": "Get data by short name",
-                "operationId": "getSponsrs",
+                "operationId": "getPublicevents",
                 "responses": {
                     "405": {
                         "description": "Invalid input"
@@ -114,53 +961,195 @@
                 }
             }
         },
-        "/api/columns": {
+        "/api/publicevents/{id}": {
             "get": {
                 "tags": [
-                    "Columns"
+                    "Jamoat birlashmalar tadbirlari"
                 ],
                 "summary": "Get data by short name",
-                "operationId": "getColumns",
-                "responses": {
-                    "405": {
-                        "description": "Invalid input"
-                    }
-                }
-            }
-        },
-        "/api/countries": {
-            "get": {
-                "tags": [
-                    "Country"
-                ],
-                "summary": "Get data by short name",
-                "operationId": "getCountries",
-                "responses": {
-                    "405": {
-                        "description": "Invalid input"
-                    }
-                }
-            }
-        },
-        "/api/country_relationship/{flage}": {
-            "get": {
-                "tags": [
-                    "Country"
-                ],
-                "summary": "Get data by short name",
-                "operationId": "countries",
+                "operationId": "getOnePublicevent",
                 "parameters": [
                     {
-                        "name": "flage",
+                        "name": "id",
                         "in": "path",
                         "description": "flage of country that needs to be got",
                         "required": true,
                         "schema": {
-                            "type": "string",
-                            "format": "string"
+                            "type": "integer",
+                            "format": "int32"
                         }
                     }
                 ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/publicevents/page/{count}": {
+            "get": {
+                "tags": [
+                    "Jamoat birlashmalar tadbirlari"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getPubliceventPag",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "flage of country that needs to be got",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/tagsearch/{search}": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "TagSearch",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Izlash so'zini kiriting",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "text"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/titlesearch/{search}": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "TitleSearch",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Izlash so'zini kiriting",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "text"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/sendContact": {
+            "post": {
+                "tags": [
+                    "Send Contact"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "Sendcontact",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "required|max:50",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "required|min:2|max:15",
+                                        "type": "string"
+                                    },
+                                    "text": {
+                                        "description": "null",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/sendProject": {
+            "post": {
+                "tags": [
+                    "Send Project"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "sendproject",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "required|max:50",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "required|max:100",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "required|min:2|max:15",
+                                        "type": "string"
+                                    },
+                                    "columnName": {
+                                        "description": "required|max:100",
+                                        "type": "string"
+                                    },
+                                    "about": {
+                                        "description": "required",
+                                        "type": "string"
+                                    },
+                                    "images": {
+                                        "description": "required",
+                                        "type": "file"
+                                    },
+                                    "socials": {
+                                        "description": "required",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "405": {
                         "description": "Invalid input"

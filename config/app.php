@@ -84,6 +84,8 @@ return [
 
     'locale' => 'en',
 
+    'all_locales'=>['uz', 'oz', 'ru', 'en'],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

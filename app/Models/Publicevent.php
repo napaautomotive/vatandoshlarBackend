@@ -6,9 +6,9 @@ use App\Traits\ScopeTrait;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Column extends Model
+class Publicevent extends Model
 {
     use ScopeTrait;
     protected $guarded=['id'];
-    protected $table='columns';
+    protected $table="publicevents";
 }

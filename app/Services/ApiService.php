@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Http\JsonResponse;
+
 class ApiService
 {
     public $model;
@@ -10,11 +12,11 @@ class ApiService
     {
         $this->model = $model;
     }
-    public function getApi($id = null)
+    public function getApi($id = null): JsonResponse
     {
         try {
             $data = $id
-                ? $this->model->where("id", $id)->first()
+                ? $this->model->find($id)->get()
                 : $this->model->all();
 
             return response()->json([

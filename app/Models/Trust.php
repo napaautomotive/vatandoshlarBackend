@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class NewTag extends Model
+class Trust extends Model
 {
-
-    protected $casts = [ 'options' => 'array', ];
     
 }
