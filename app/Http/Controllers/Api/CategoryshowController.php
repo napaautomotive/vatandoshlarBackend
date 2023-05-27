@@ -121,7 +121,7 @@ class CategoryshowController extends Controller
 
     public function getCategoryshowsPag($count): JsonResponse
     {
-        $data = Categoryshow::orderBy("created_at", "DESC")->simplePaginate($count);
+        $data = Categoryshow::orderBy("data", "DESC")->simplePaginate($count);
 
         if ($data) {
             return $this->success([$data, 'total' => Categoryshow::count()]);

@@ -14,9 +14,9 @@ use App\Http\Controllers\ImportExportController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::controller(ImportExportController::class)->group(function(){
     Route::get('import_export', 'importExport');

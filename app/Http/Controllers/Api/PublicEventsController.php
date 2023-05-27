@@ -119,7 +119,7 @@ class PublicEventsController extends Controller
 
     public function getPubliceventPag($count): JsonResponse
     {
-        $data = Publicevent::orderBy("created_at", "DESC")->simplePaginate($count);
+        $data = Publicevent::orderBy("data", "DESC")->simplePaginate($count);
 
         if ($data) {
             return $this->success([$data, 'total' => Publicevent::count()]);

@@ -170,10 +170,24 @@
                 }
             }
         },
+        "/api/aboutassosiations": {
+            "get": {
+                "tags": [
+                    "Jamoat Birlashmalari"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getAboutAssosiation",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
         "/api/assosiations": {
             "get": {
                 "tags": [
-                    "Assosiation"
+                    "Jamoat Birlashmalari"
                 ],
                 "summary": "Get data by short name",
                 "operationId": "getAssosiation",
@@ -187,7 +201,7 @@
         "/api/assosiationcategory": {
             "get": {
                 "tags": [
-                    "Assosiation"
+                    "Jamoat Birlashmalari"
                 ],
                 "summary": "Get data by short name",
                 "operationId": "getAssosiationCategory",
@@ -323,6 +337,34 @@
                         }
                     }
                 ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/webinars": {
+            "get": {
+                "tags": [
+                    "Vebinar Slider"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getWebinar",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/faqs": {
+            "get": {
+                "tags": [
+                    "FAQ"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getFaq",
                 "responses": {
                     "405": {
                         "description": "Invalid input"
@@ -493,6 +535,60 @@
                         }
                     }
                 ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/columns/brandColumn/{count}": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "BrandColumn",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "nechta chiqishi kerak?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/headcolumns": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getHeadcolumn",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/aboutcolumns": {
+            "get": {
+                "tags": [
+                    "Column"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "getAboutcolumns",
                 "responses": {
                     "405": {
                         "description": "Invalid input"
@@ -1013,7 +1109,7 @@
                 }
             }
         },
-        "/api/tagsearch/{search}": {
+        "/api/tagsearch/{search}/{paginate}": {
             "get": {
                 "tags": [
                     "Search"
@@ -1030,6 +1126,16 @@
                             "type": "string",
                             "format": "text"
                         }
+                    },
+                    {
+                        "name": "paginate",
+                        "in": "path",
+                        "description": "1 ta sahifada nechta chiqaramiz?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
                     }
                 ],
                 "responses": {
@@ -1039,7 +1145,7 @@
                 }
             }
         },
-        "/api/titlesearch/{search}": {
+        "/api/titlesearch/{search}/{paginate}": {
             "get": {
                 "tags": [
                     "Search"
@@ -1055,6 +1161,68 @@
                         "schema": {
                             "type": "string",
                             "format": "text"
+                        }
+                    },
+                    {
+                        "name": "paginate",
+                        "in": "path",
+                        "description": "1 ta sahifada nechta chiqaramiz?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/brandtag/{paginate}": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "BrandTag",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "path",
+                        "description": "1 ta sahifada nechta chiqaramiz?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/latesttag/{paginate}": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Get data by short name",
+                "operationId": "LatestTag",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "path",
+                        "description": "1 ta sahifada nechta chiqaramiz?",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
                         }
                     }
                 ],
@@ -1136,9 +1304,14 @@
                                         "description": "required",
                                         "type": "string"
                                     },
-                                    "images": {
-                                        "description": "required",
-                                        "type": "file"
+                                    "files": {
+                                        "description": "images",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "file",
+                                            "format": "multiple",
+                                            "collectionFormat": "multi"
+                                        }
                                     },
                                     "socials": {
                                         "description": "required",

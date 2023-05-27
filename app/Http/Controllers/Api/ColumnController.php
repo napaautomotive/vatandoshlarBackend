@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
+use App\Models\Headcolumn;
+use App\Models\Aboutcolumn;
 use App\Models\Column;
 use App\Models\ColumnMenu;
 use App\Models\News;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class ColumnController extends Controller
 {
@@ -128,13 +131,97 @@ class ColumnController extends Controller
     {
         $data = Column::query()
             ->where('menu_uz', $id)
-            ->orderBy("created_at", "DESC")
+            ->orderBy("data", "DESC")
             ->simplePaginate($count);
 
         if ($data){
             return $this->success([$data, 'total'=>Column::query()->where('menu_uz', $id)->count()]);
         }
 
+        return $this->error(['message'=>'no data']);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/columns/brandColumn/{count}",
+     *     tags={"Column"},
+     *     summary="Get data by short name",
+     *     operationId="BrandColumn",
+     *     @OA\Parameter(
+     *         name="count",
+     *         in="path",
+     *         description="nechta chiqishi kerak?",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function BrandColumn($count)
+    {
+        $data = Column::query()
+            ->orderBy("viewers", "DESC")
+            ->simplePaginate($count);
+
+        if ($data){
+            return $this->success([$data, 'total'=>Column::query()->count()]);
+        }
+
+        return $this->error(['message'=>'no data']);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/headcolumns",
+     *     tags={"Column"},
+     *     summary="Get data by short name",
+     *     operationId="getHeadcolumn",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getHeadcolumn():JsonResponse
+    {
+        $data = Headcolumn::all();
+//        $user = DB::table('columns')->select('menu_uz', DB::raw('count(*) as total'))->groupBy('menu_uz')->get();
+//        dd($user);
+
+        if ($data){
+            return $this->success($data);
+        }
+        return $this->error(['message'=>'no data']);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/aboutcolumns",
+     *     tags={"Column"},
+     *     summary="Get data by short name",
+     *     operationId="getAboutcolumns",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getAboutcolumns():JsonResponse
+    {
+        $data = Aboutcolumn::all()->first();
+
+        if ($data){
+            return $this->success($data);
+        }
         return $this->error(['message'=>'no data']);
     }
 }

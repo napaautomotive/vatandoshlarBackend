@@ -130,7 +130,7 @@ class NewsController extends Controller
 
     public function getNewsPag($count): JsonResponse
     {
-        $data = News::orderBy("created_at", "DESC")->simplePaginate($count);
+        $data = News::orderBy("data", "DESC")->simplePaginate($count);
 
         if ($data){
             return $this->success([$data, 'total'=>News::count()]);

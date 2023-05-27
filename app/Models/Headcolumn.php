@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Models;
-use App\Traits\ScopeTrait;
+
 use Illuminate\Database\Eloquent\Model;
 
 
-class Slider extends Model
+class Headcolumn extends Model
 {
-    use ScopeTrait;
+    protected $table = 'headcolumns';
     protected $guarded=['id'];
+    protected $fillable=['counts'];
 }

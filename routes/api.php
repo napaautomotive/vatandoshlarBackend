@@ -48,6 +48,7 @@ Route::controller(ApiController::class)->group(function () {
     Route::get('/trusts/page/{count}', "getTrustPag");
     Route::get('/sliders', "getSliders");
     Route::get('/sliders/{id}', "getOneSlider");
+    Route::get('/aboutassosiations', "getAboutAssosiation");
     Route::get('/assosiations', "getAssosiation");
     Route::get('/assosiationcategory', "getAssosiationCategory");
     Route::get('/infographics', "getInfographics");
@@ -56,6 +57,8 @@ Route::controller(ApiController::class)->group(function () {
     Route::get('/events', "getEvents");
     Route::get('/events/{id}', "getOneEvents");
     Route::get('/events/page/{count}', "getEventsPag");
+    Route::get('/webinars', "getWebinar");
+    Route::get('/faqs', "getFaq");
 });
 
 Route::controller(PublicEventsController::class)->group(function () {
@@ -70,9 +73,12 @@ Route::controller(PublicEventsController::class)->group(function () {
 
 Route::controller(ColumnController::class)->group(function () {
     Route::get('/column-menus', "getColumnMenu");
+    Route::get('/headcolumns', "getHeadcolumn");
+    Route::get('/aboutcolumns', "getAboutcolumns");
     Route::get('/columns', "getColumns");
     Route::get('/columns/{id}', "getOneColumn");
     Route::get('/columns/page/{count}/{id}', "getColumnsPag");
+    Route::get('/columns/brandColumn/{count}', "BrandColumn");
 });
 
 Route::controller(CategoryshowController::class)->group(function () {
@@ -97,8 +103,10 @@ Route::controller(MediatekaController::class)->group(function () {
 
 Route::controller(SearchController::class)->group(function () {
 //    Route::get('/tag/{search}', "searchByTag");
-    Route::get('/tagsearch/{search}', "TagSearch");
-    Route::get('/titlesearch/{search}', "TitleSearch");
+    Route::get('/tagsearch/{search}/{paginate}', "TagSearch");
+    Route::get('/brandtag/{paginate}', "Brandtag");
+    Route::get('/latesttag/{paginate}', "LatestTag");
+    Route::get('/titlesearch/{search}/{paginate}', "TitleSearch");
 });
 
 Route::controller(ManagementController::class)->group(function () {

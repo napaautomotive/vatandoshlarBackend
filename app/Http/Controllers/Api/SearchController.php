@@ -8,6 +8,7 @@ use App\Models\Categoryshow;
 use App\Models\Event;
 use App\Models\Infographic;
 use App\Models\Publicevent;
+use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
@@ -57,7 +58,7 @@ class SearchController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/tagsearch/{search}",
+     *     path="/api/tagsearch/{search}/{paginate}",
      *     tags={"Search"},
      *     summary="Get data by short name",
      *     operationId="TagSearch",
@@ -71,32 +72,44 @@ class SearchController extends Controller
      *             format="text"
      *         )
      *     ),
+     *     @OA\Parameter(
+     *         name="paginate",
+     *         in="path",
+     *         description="1 ta sahifada nechta chiqaramiz?",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
      *     @OA\Response(
      *         response=405,
      *         description="Invalid input"
      *     ),
      * )
      */
-    public function TagSearch($search)
+    public function TagSearch($search, $paginate)
     {
         $columns = Column::query()->selectAll($search);
+        $sliders = Slider::query()->selectAll($search);
         $events = Event::query()->selectAll($search);
         $news = News::query()->selectAll($search);
         $infographics = Infographic::query()->selectAll($search);
         $categoryshows = Categoryshow::query()->selectAll($search);
         $publicevents = Publicevent::query()->selectAll($search)
             ->union($columns)
+            ->union($sliders)
             ->union($events)
             ->union($news)
             ->union($infographics)
-            ->union($categoryshows)->paginate(8);
+            ->union($categoryshows)->orderBy('data', 'DESC')->paginate($paginate);
 
         return $this->success($publicevents);
     }
 
     /**
      * @OA\Get(
-     *     path="/api/titlesearch/{search}",
+     *     path="/api/titlesearch/{search}/{paginate}",
      *     tags={"Search"},
      *     summary="Get data by short name",
      *     operationId="TitleSearch",
@@ -110,13 +123,23 @@ class SearchController extends Controller
      *             format="text"
      *         )
      *     ),
+     *     @OA\Parameter(
+     *         name="paginate",
+     *         in="path",
+     *         description="1 ta sahifada nechta chiqaramiz?",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
      *     @OA\Response(
      *         response=405,
      *         description="Invalid input"
      *     ),
      * )
      */
-    public function TitleSearch($search)
+    public function TitleSearch($search,$paginate)
     {
         $columns = Column::query()->selectTitle($search);
         $events = Event::query()->selectTitle($search);
@@ -128,7 +151,85 @@ class SearchController extends Controller
             ->union($events)
             ->union($news)
             ->union($infographics)
-            ->union($categoryshows)->paginate(8);
+            ->union($categoryshows)->paginate($paginate);
+
+        return $this->success($publicevents);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/brandtag/{paginate}",
+     *     tags={"Search"},
+     *     summary="Get data by short name",
+     *     operationId="BrandTag",
+     *     @OA\Parameter(
+     *         name="paginate",
+     *         in="path",
+     *         description="1 ta sahifada nechta chiqaramiz?",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+    public function BrandTag($paginate)
+    {
+        $columns = Column::query()->brandTag();
+        $events = Event::query()->brandTag();
+        $news = News::query()->brandTag();
+        $infographics = Infographic::query()->brandTag();
+        $categoryshows = Categoryshow::query()->brandTag();
+        $publicevents = Publicevent::query()->brandTag()
+            ->union($columns)
+            ->union($events)
+            ->union($news)
+            ->union($infographics)
+            ->union($categoryshows)->orderBy('viewers', 'DESC')->paginate($paginate);
+
+        return $this->success($publicevents);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/latesttag/{paginate}",
+     *     tags={"Search"},
+     *     summary="Get data by short name",
+     *     operationId="LatestTag",
+     *     @OA\Parameter(
+     *         name="paginate",
+     *         in="path",
+     *         description="1 ta sahifada nechta chiqaramiz?",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+    public function LatestTag($paginate)
+    {
+        $columns = Column::query()->brandTag();
+        $events = Event::query()->brandTag();
+        $news = News::query()->brandTag();
+        $infographics = Infographic::query()->brandTag();
+        $categoryshows = Categoryshow::query()->brandTag();
+        $publicevents = Publicevent::query()->brandTag()
+            ->union($columns)
+            ->union($events)
+            ->union($news)
+            ->union($infographics)
+            ->union($categoryshows)->orderBy('data', 'DESC')->paginate($paginate);
 
         return $this->success($publicevents);
     }

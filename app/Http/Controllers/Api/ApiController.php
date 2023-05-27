@@ -11,10 +11,13 @@ use App\Models\InteractiveService;
 use App\Models\About;
 use App\Models\Trust;
 use App\Models\Slider;
+use App\Models\Aboutassosiation;
 use App\Models\Assosiation;
 use App\Models\AssosiationCategory;
 use App\Models\Infographic;
 use App\Models\Event;
+use App\Models\Webinar;
+use App\Models\Faq;
 
 
 class ApiController extends Controller
@@ -237,9 +240,14 @@ class ApiController extends Controller
 
     public function getOneSlider($id)
     {
-        $data = Slider::find($id);
-        if ($data){
-            return $this->success($data);
+        $sliderViewers = Slider::find($id);
+
+        if ($sliderViewers){
+            $sliderViewers->update([
+                'viewers' => $sliderViewers->viewers + 1
+            ]);
+
+            return $this->success($sliderViewers);
         }
 
         return $this->error(['message'=>'no data']);
@@ -247,8 +255,30 @@ class ApiController extends Controller
 
     /**
      * @OA\Get(
+     *     path="/api/aboutassosiations",
+     *     tags={"Jamoat Birlashmalari"},
+     *     summary="Get data by short name",
+     *     operationId="getAboutAssosiation",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getAboutAssosiation():JsonResponse
+    {
+        $data = Aboutassosiation::all();
+        if ($data){
+            return $this->success($data);
+        }
+        return $this->error(['message'=>'no data']);
+    }
+
+    /**
+     * @OA\Get(
      *     path="/api/assosiations",
-     *     tags={"Assosiation"},
+     *     tags={"Jamoat Birlashmalari"},
      *     summary="Get data by short name",
      *     operationId="getAssosiation",
      *     @OA\Response(
@@ -270,7 +300,7 @@ class ApiController extends Controller
     /**
      * @OA\Get(
      *     path="/api/assosiationcategory",
-     *     tags={"Assosiation"},
+     *     tags={"Jamoat Birlashmalari"},
      *     summary="Get data by short name",
      *     operationId="getAssosiationCategory",
      *     @OA\Response(
@@ -374,7 +404,7 @@ class ApiController extends Controller
 
     public function getInfographicsPag($count)
     {
-        $data = Infographic::orderBy("created_at", "DESC")->simplePaginate($count);
+        $data = Infographic::orderBy("data", "DESC")->simplePaginate($count);
 
         if ($data){
             return $this->success([$data, 'total'=>Infographic::count()]);
@@ -470,7 +500,7 @@ class ApiController extends Controller
 
     public function getEventsPag($count)
     {
-        $data = Event::orderBy("created_at", "DESC")->simplePaginate($count);
+        $data = Event::orderBy("data", "DESC")->simplePaginate($count);
 
         if ($data){
             return $this->success([$data, 'total'=>Event::count()]);
@@ -479,6 +509,50 @@ class ApiController extends Controller
         return $this->error(['message'=>'no data']);
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/api/webinars",
+     *     tags={"Vebinar Slider"},
+     *     summary="Get data by short name",
+     *     operationId="getWebinar",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getWebinar()
+    {
+        $data = Webinar::all();
+        if ($data){
+            return $this->success($data);
+        }
+        return $this->error(['message'=>'no data']);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/faqs",
+     *     tags={"FAQ"},
+     *     summary="Get data by short name",
+     *     operationId="getFaq",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getFaq()
+    {
+        $data = Faq::all();
+        if ($data){
+            return $this->success($data);
+        }
+        return $this->error(['message'=>'no data']);
+    }
 
 
 }
