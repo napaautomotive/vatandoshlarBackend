@@ -50,6 +50,8 @@ Route::controller(ApiController::class)->group(function () {
     Route::get('/sliders/{id}', "getOneSlider");
     Route::get('/aboutassosiations', "getAboutAssosiation");
     Route::get('/assosiations', "getAssosiation");
+    Route::get('/location-assosiations', "getLocationAssosiation");
+    Route::get('/location-assosiations/{id}', "getLocationAssosiationById");
     Route::get('/assosiationcategory', "getAssosiationCategory");
     Route::get('/infographics', "getInfographics");
     Route::get('/infographics/{id}', "getOneInfographics");

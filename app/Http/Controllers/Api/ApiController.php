@@ -18,6 +18,7 @@ use App\Models\Infographic;
 use App\Models\Event;
 use App\Models\Webinar;
 use App\Models\Faq;
+use App\Models\Location;
 
 
 class ApiController extends Controller
@@ -297,6 +298,62 @@ class ApiController extends Controller
         return $this->error(['message'=>'no data']);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/location-assosiations",
+     *     tags={"Jamoat Birlashmalari Soni"},
+     *     summary="Get data by short name",
+     *     operationId="getLocationAssosiation",
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getLocationAssosiation():JsonResponse
+    {
+        $data = Location::query()->withCount('assosiationCategories')->get();
+        if ($data){
+            return $this->success($data);
+        }
+
+        return $this->error(['message'=>'no data']);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/location-assosiations/{id}",
+     *     tags={"Jamoat Birlashmalari Soni"},
+     *     summary="Get data by short name",
+     *     operationId="getLocationAssosiationById",
+     *      @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="flage of country that needs to be got",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int32"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     * )
+     */
+
+    public function getLocationAssosiationById($id):JsonResponse
+    {
+        $data = Location::query()->with('assosiationCategories')->find($id);
+        if ($data){
+            return $this->success($data);
+        }
+
+        return $this->error(['message'=>'no data']);
+    }
+    
     /**
      * @OA\Get(
      *     path="/api/assosiationcategory",
